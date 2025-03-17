@@ -831,7 +831,7 @@ local humanoid = character:WaitForChild("Humanoid")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Messages to send
-local messages = {"MESSAGE x1", "MESSAGE x2", "MESSAGE x3", "MESSAGE x4"}
+local messages = {"Another day...", "Focused Manipulation."}
 
 local function sendMessage(text)
     ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
@@ -846,7 +846,7 @@ end
 
 --[[Idle Animation]]
 
-local animationId = "rbxassetid://15099756132" -- Replace with your animation ID
+local animationId = "rbxassetid://18933416371" -- Replace with your animation ID
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
@@ -1144,7 +1144,7 @@ for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
 end
 
 local AnimAnim = Instance.new("Animation")
-AnimAnim.AnimationId = "rbxassetid://14611879113" -- Replace with your animation ID
+AnimAnim.AnimationId = "rbxassetid://17325160621" -- Replace with your animation ID
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -1188,13 +1188,13 @@ v.Color =
 ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
 Color3.fromRGB(255, 0, 0)), -- Change Color (Red, Green, Blue)
 ColorSequenceKeypoint.new(1.00, 
-Color3.fromRGB(0, 0, 255))} -- Change Color (Red, Green, Blue)
+Color3.fromRGB(255, 0, 0))} -- Change Color (Red, Green, Blue)
 end
 pp:WaitForChild('WaterTrail').Color = 
 ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
 Color3.fromRGB(255, 0, 0)), -- Change Color (Red, Green, Blue) 
 ColorSequenceKeypoint.new(1.00, 
-Color3.fromRGB(0, 0, 255))} -- Change Color (Red, Green, Blue)
+Color3.fromRGB(255, 0, 0))} -- Change Color (Red, Green, Blue)
 
 end end)
 
