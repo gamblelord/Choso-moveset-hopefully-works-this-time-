@@ -1,0 +1,38 @@
+-- Script to change avatar appearance temporarily using an executor
+local function changeAvatar(player)
+    -- Ensure the player and character exist
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    -- Change the character's appearance (e.g., Shirt and Pants)
+    local shirt = character:FindFirstChild("Shirt")
+    if shirt then
+        shirt.ShirtTemplate = "rbxassetid://1234567890"  -- Replace with your custom shirt ID
+    end
+
+    local pants = character:FindFirstChild("Pants")
+    if pants then
+        pants.PantsTemplate = "rbxassetid://0987654321"  -- Replace with your custom pants ID
+    end
+
+    -- You can add accessories like hats here as well
+    local hat = Instance.new("Accessory")
+    hat.Name = "CoolHat"
+    hat.AttachmentPoint = humanoid:FindFirstChild("Head")
+    hat.AttachmentPoint.Position = Vector3.new(0, 0, 0)  -- Adjust positioning if necessary
+    hat.Parent = character
+
+    -- Additional graphical customizations like face or body parts can be added here
+    -- Example: Changing face
+    local face = character:FindFirstChild("face")
+    if face then
+        face.Texture = "rbxassetid://1122334455"  -- Replace with your custom face ID
+    end
+end
+
+-- Execute the avatar change when the player is added
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        changeAvatar(player)
+    end)
+end)
