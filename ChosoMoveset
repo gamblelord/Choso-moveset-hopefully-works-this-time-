@@ -15,7 +15,7 @@ local baseButton = hotbarFrame:FindFirstChild("1").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Move1"
+ToolName.Text = "Bloodshed"
 
 
 local player = game.Players.LocalPlayer
@@ -33,7 +33,7 @@ local baseButton = hotbarFrame:FindFirstChild("2").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Move2"
+ToolName.Text = "Slamming Output"
 
 
 local player = game.Players.LocalPlayer
@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Move3"
+ToolName.Text = "10% Exorcism"
 
 
 local player = game.Players.LocalPlayer
@@ -69,7 +69,7 @@ local baseButton = hotbarFrame:FindFirstChild("4").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Move4"
+ToolName.Text = "Cursed Clash"
 
 
 local Players = game:GetService("Players")
@@ -93,7 +93,7 @@ local function findGuiAndSetText()
 
             if textLabel then
 
-                textLabel.Text = "UltimateName"
+                textLabel.Text = "ELDEST BROTHER!"
 
             end
 
@@ -112,7 +112,7 @@ findGuiAndSetText()
 
 --[[Move 1]]
 
-local animationId = 10468665991
+local animationId = 17097745294
 
 
 local player = game.Players.LocalPlayer
@@ -141,7 +141,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://17838006839"
+AnimAnim.AnimationId = "rbxassetid://75502010126640"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -170,7 +170,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 10466974800
+local animationId = 95575238948327
 
 
 local player = game.Players.LocalPlayer
@@ -199,7 +199,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://18181589384"
+AnimAnim.AnimationId = "rbxassetid://94020267622363"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -228,7 +228,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 10471336737
+local animationId = 13083332742
 
 
 local player = game.Players.LocalPlayer
@@ -257,7 +257,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://17838619895"
+AnimAnim.AnimationId = "rbxassetid://12832505612"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -293,7 +293,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 12510170988
+local animationId = 18716952942
 
 
 local player = game.Players.LocalPlayer
@@ -321,7 +321,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://16515850153"
+AnimAnim.AnimationId = "rbxassetid://14900168720"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -348,7 +348,7 @@ end
 
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
-local animationId = 15955393872
+local animationId = 76530443909428
 
 
 local player = game.Players.LocalPlayer
@@ -376,7 +376,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://15943915877"
+AnimAnim.AnimationId = "rbxassetid://79761806706382"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -404,7 +404,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 12447707844
+local animationId = 17097745294
 
 
 local player = game.Players.LocalPlayer
@@ -458,7 +458,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 10479335397
+local animationId = 75547590335774
 
 
 local player = game.Players.LocalPlayer
@@ -486,7 +486,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://13294790250"
+AnimAnim.AnimationId = "rbxassetid://100558589307006"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -548,7 +548,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://14900168720"
+AnimAnim.AnimationId = "rbxassetid://18179181663"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -604,7 +604,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://12447247483"
+AnimAnim.AnimationId = "rbxassetid://18716588373"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -668,7 +668,7 @@ local replacementAnimations = {
 
     ["10469643643"] = "rbxassetid://17889290569", --punch4
 
-    ["17859015788"] = "rbxassetid://12684185971", --downslam finisher
+    ["94020267622363"] = "rbxassetid://12684185971", --downslam finisher
 
     ["11365563255"] = "rbxassetid://14516273501" --punch idk
 
@@ -831,7 +831,7 @@ local humanoid = character:WaitForChild("Humanoid")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Messages to send
-local messages = {"MESSAGE x1", "MESSAGE x2", "MESSAGE x3", "MESSAGE x4"}
+local messages = {"Welcome! Script made by GambleLord", "MESSAGE x2", "MESSAGE x3", "MESSAGE x4"}
 
 local function sendMessage(text)
     ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
@@ -1144,7 +1144,7 @@ for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
 end
 
 local AnimAnim = Instance.new("Animation")
-AnimAnim.AnimationId = "rbxassetid://14611879113" -- Replace with your animation ID
+AnimAnim.AnimationId = "rbxassetid://18435303746" -- Replace with your animation ID
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -1169,14 +1169,14 @@ v.Color =
 ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
 Color3.fromRGB(255, 0, 0)), -- Change Color (Red, Green, Blue)
 ColorSequenceKeypoint.new(1.00, 
-Color3.fromRGB(0, 0, 255))} -- Change Color (Red, Green, Blue)
+Color3.fromRGB(255, 0, 0))} -- Change Color (Red, Green, Blue)
 end
 
 pp:WaitForChild('WaterTrail').Color = 
 ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
 Color3.fromRGB(255, 0, 0)), -- Change Color (Red, Green, Blue)
 ColorSequenceKeypoint.new(1.00, 
-Color3.fromRGB(0, 0, 255))} -- Change Color (Red, Green, Blue)
+Color3.fromRGB(255, 0, 0))} -- Change Color (Red, Green, Blue)
 
 end end)
 --[[RIGHT ARM colors]]
@@ -1188,7 +1188,7 @@ v.Color =
 ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
 Color3.fromRGB(255, 0, 0)), -- Change Color (Red, Green, Blue)
 ColorSequenceKeypoint.new(1.00, 
-Color3.fromRGB(0, 0, 255))} -- Change Color (Red, Green, Blue)
+Color3.fromRGB(255, 0, 0))} -- Change Color (Red, Green, Blue)
 end
 pp:WaitForChild('WaterTrail').Color = 
 ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
