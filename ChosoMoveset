@@ -15,7 +15,7 @@ local baseButton = hotbarFrame:FindFirstChild("1").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "test"
+ToolName.Text = "Bloodshed"
 
 
 local player = game.Players.LocalPlayer
@@ -33,7 +33,7 @@ local baseButton = hotbarFrame:FindFirstChild("2").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "test"
+ToolName.Text = "Crushing Negatives"
 
 
 local player = game.Players.LocalPlayer
@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "test"
+ToolName.Text = "Slicing Exorcism"
 
 
 local player = game.Players.LocalPlayer
@@ -69,7 +69,7 @@ local baseButton = hotbarFrame:FindFirstChild("4").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "test"
+ToolName.Text = "Bloody Clash"
 
 
 local Players = game:GetService("Players")
@@ -141,7 +141,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://17838006839"
+AnimAnim.AnimationId = "rbxassetid://17097745294"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -199,7 +199,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://18181589384"
+AnimAnim.AnimationId = "rbxassetid://18716581594"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -257,7 +257,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://17838619895"
+AnimAnim.AnimationId = "rbxassetid://13146710762"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -321,7 +321,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://16515850153"
+AnimAnim.AnimationId = "rbxassetid://18716952942"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -376,7 +376,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://15943915877"
+AnimAnim.AnimationId = "rbxassetid://76530443909428"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -432,7 +432,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://17106858586 "
+AnimAnim.AnimationId = "rbxassetid://129651400898906"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -486,7 +486,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://13294790250"
+AnimAnim.AnimationId = "rbxassetid://75547590335774"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -548,7 +548,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://14900168720"
+AnimAnim.AnimationId = "rbxassetid://129651400898906"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -604,7 +604,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://12447247483"
+AnimAnim.AnimationId = "rbxassetid://13294790250"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -660,7 +660,7 @@ local animationIdsToStop = {
 
 local replacementAnimations = {
 
-    ["10469493270"] = "rbxassetid://17889458563", --punch1
+    ["15290114868"] = "rbxassetid://17889458563", --punch1
 
     ["10469630950"] = "rbxassetid://17889461810", --punch2
 
