@@ -17,8 +17,8 @@ local ultbarclr:Frame = ultbar:FindFirstChild("Health").Bar.Bar
 local ulttext:TextButton = ultbar:FindFirstChild("TextLabel")
 
 -- Awakening text & color
-ulttext.Text = "FOCUSED IMBUE"
-ultbarclr.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- In RGB values (red, green, blue)
+ulttext.Text = "FULL-BLOWN BLOODLUSTED MENTALITY"
+ultbarclr.BackgroundColor3 = Color3.fromRGB(175, 0, 255) -- In RGB values (red, green, blue)
 
 local hotbar:ScreenGui = plrgui:FindFirstChild("Hotbar")
 local backpack = hotbar:FindFirstChild("Backpack")
@@ -38,24 +38,11 @@ SetMoveNames()
 
 -- Awakening move names
 local function SetAwkNames()
-    b1.Text = "Vengeance"
+    b1.Text = "Piercing Parry"
     b2.Text = "Blood Rain"
-    b3.Text = "200% Piercing Blood"
-    b4.Text = "Sky Maelstrom"
+    b3.Text = "ALL YOUR ENERGY!"
+    b4.Text = "ORBITAL NEGATIVES"
 end
-
--- Tools
-local extraTools = {
-    run = {
-        Name = "Broke", -- if Name is not provided, it uses it's internal name instead ("run")
-    }
-}
-local extraMoves = { -- Tools but acts like moves
-    fart = {
-        Name = "Broken",
-        Cooldown = 1, -- Adds a cooldown on the tool
-    }
-}
 
 -- Animations
 -- Old Animations (Animations that are currently being replaced)
@@ -100,10 +87,10 @@ local newAnimations = {
     move2 = "12618271998", -- Replace with your new move 2 animation ID
     move3 = "17838619895", -- Replace with your new move 3 animation ID
     move4 = "129651400898906", -- Replace with your new move 4 animation ID
-    amove1 = "16002681909", -- Replace with your new move awakening 1 animation ID
-    amove2 = "114095570398448", -- Replace with your new move awakening 2 animation ID
+    amove1 = "13146710762", -- Replace with your new move awakening 1 animation ID
+    amove2 = "94020267622363", -- Replace with your new move awakening 2 animation ID
     amove3 = "13146710762", -- Replace with your new move awakening 3 animation ID
-    amove4 = "114804712485842", -- Replace with your new move awakening 4 animation ID
+    amove4 = "130301810149072", -- Replace with your new move awakening 4 animation ID
 }
 
 -- Code/functions to use in the handlers
@@ -266,57 +253,6 @@ local handlers = {
 local animDt = {
     move2 = { Speed = 1.7 },
 }
-
--- Tool/Moves
--- Tools
-for k, v in pairs(extraTools) do
-    local tool = Instance.new("Tool")
-    tool.Name = v.Name or k
-    tool.RequiresHandle = false
-    tool.Parent = lplr.Backpack
-    
-    tool.Equipped:Connect(function(mouse)
-        local handler = handlers[k] or function()end
-        handler(mouse, true, tool) -- Second parameter is if it is equipped or not, third is the tool incase of uhh
-    end)
-    tool.Unequipped:Connect(function(mouse)
-        local handler = handlers[k] or function()end
-        handler(mouse, false, tool) -- Second parameter is if it is equipped or not, third is the tool incase of uhh
-    end)
-end
--- Extra moves
-for k, v in pairs(extraMoves) do
-    local tool = Instance.new("Tool")
-    tool.Name = v.Name or k
-    tool.RequiresHandle = false
-    tool.Parent = lplr.Backpack
-    tool:SetAttribute("OnCooldown", falsse)
-    
-    tool.Equipped:Connect(function(mouse)
-        local hum = char.Humanoid
-        if tool:GetAttribute("OnCooldown") then
-            hum:UnequipTools()
-            return
-        end
-        tool:SetAttribute("OnCooldown", true)
-        local handler = handlers[k] or function()end
-        
-        handler(mouse)
-        hum:UnequipTools()
-        
-        task.spawn(function()
-            local tweenService = game:GetService("TweenService")
-            local BACKPACK_SCRIPT = hotbar:FindFirstChildOfClass("LocalScript") or backpack:FindFirstChildOfClass("LocalScript")
-            local COOLDOWN_UI = BACKPACK_SCRIPT.Base.Cooldown
-            
-            local cooldownUi = COOLDOWN_UI:Clone()
-            cooldownUi.Parent = hotbarf:FindFirstChild(tostring(#lplr.Backpack:GetChildren()))
-            tweenService:Create(cooldownUi, TweenInfo.new(v.Cooldown), {Size = UDim2.new(1, 0, 0, 0)}):Play()
-            task.wait(v.Cooldown)
-            tool:SetAttribute("OnCooldown", false)
-        end)
-    end)
-end
 
 local hum = char:FindFirstChildOfClass("Humanoid")
 local animator = hum:FindFirstChildOfClass("Animator")
