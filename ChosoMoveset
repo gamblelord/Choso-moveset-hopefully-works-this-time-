@@ -39,7 +39,7 @@ SetMoveNames()
 -- Awakening move names
 local function SetAwkNames()
     b1.Text = "Piercing Parry"
-    b2.Text = "Blood Rain"
+    b2.Text = "Ripping Uprise"
     b3.Text = "ALL YOUR ENERGY!"
     b4.Text = "ORBITAL NEGATIVES"
 end
@@ -65,7 +65,7 @@ local oldAnimations = {
     move4 = "12510170988", -- Replace with the old move 4 animation ID
     amove1 = "18715881168", -- Replace with the old awakening move 1 animation ID
     amove2 = "11365563255", -- Replace with the old awakening move 2 animation ID
-    amove3 = "12983333733", -- Replace with the old awakening move 3 animation ID
+    amove3 = "13146710762", -- Replace with the old awakening move 3 animation ID
     amove4 = "13927612951", -- Replace with the old awakening move 4 animation ID
 }
 
@@ -150,7 +150,7 @@ local handlers = {
     awk = function()
         chat("I WILL HOLD MY PROMISE BROTHER!")
         task.wait(0.5)
-        chat("AS THE ELDEST BROTHER, I WILL PROTECT YOU!")
+        chat("AS THE ELDEST BROTHER, I WILL PROTECT YOU!EVEN IF IT COSTS ME MY LIFE!")
     end,
 
     move1 = function(tr)
@@ -161,7 +161,7 @@ local handlers = {
         for _, v in pairs(game.ReplicatedStorage.Resources.BloodSplatter.Attachment:GetChildren()) do
             if v:IsA("ParticleEmitter") then
                 v.Enabled = false
-                v:Emit(20)
+                v:Emit(100)
             end
         end
         bloodvfx:Destroy()
@@ -176,7 +176,7 @@ local handlers = {
         blood.CanCollide = false
         blood.Anchored = true
 
-        blood.Color = Color3.fromRGB(85, 19, 13)
+        blood.Color = Color3.fromRGB(255, 53, 53)
         blood.Material = Enum.Material.Neon
         blood.CastShadow = false
         blood.Parent = workspace
@@ -184,7 +184,7 @@ local handlers = {
             if v:IsA("ParticleEmitter") then
                 local cl = v:Clone()
                 cl.Parent = blood
-                cl:Emit(2)
+                cl:Emit(90)
             end
         end
         game:GetService("Debris"):AddItem(blood, 1)
@@ -203,7 +203,7 @@ local handlers = {
             bloodvfx:Destroy()
         end)
 
-        task.wait(1.5)
+        task.wait(2.5)
         bloodvfx:Destroy()
         c:Disconnect()
     end,
@@ -251,7 +251,7 @@ local handlers = {
 
 -- Table of animation data for the animations
 local animDt = {
-    move2 = { Speed = 1.7 },
+    move2 = { Speed = 1.0},
 }
 
 local hum = char:FindFirstChildOfClass("Humanoid")
