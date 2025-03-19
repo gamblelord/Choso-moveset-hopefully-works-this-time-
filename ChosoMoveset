@@ -17,7 +17,7 @@ local ultbarclr:Frame = ultbar:FindFirstChild("Health").Bar.Bar
 local ulttext:TextButton = ultbar:FindFirstChild("TextLabel")
 
 -- Awakening text & color
-ulttext.Text = "FULL-BLOWN BLOODLUSTED MENTALITY"
+ulttext.Text = "PERFECTED BLOODLUST"
 ultbarclr.BackgroundColor3 = Color3.fromRGB(175, 0, 255) -- In RGB values (red, green, blue)
 
 local hotbar:ScreenGui = plrgui:FindFirstChild("Hotbar")
@@ -65,32 +65,32 @@ local oldAnimations = {
     move4 = "12510170988", -- Replace with the old move 4 animation ID
     amove1 = "18715881168", -- Replace with the old awakening move 1 animation ID
     amove2 = "11365563255", -- Replace with the old awakening move 2 animation ID
-    amove3 = "13146710762", -- Replace with the old awakening move 3 animation ID
-    amove4 = "13927612951", -- Replace with the old awakening move 4 animation ID
+    amove3 = "18715898844", -- Replace with the old awakening move 3 animation ID
+    amove4 = "18715891164", -- Replace with the old awakening move 4 animation ID
 }
 
 -- New Animations (Animations that will replace the old ones)
 local newAnimations = {
-    m1 = "17889458563", -- Replace with your new m1 animation ID
-    m2 = "17889461810", -- Replace with your new m2 animation ID
+    m1 = "18716133404", -- Replace with your new m1 animation ID
+    m2 = "18716143973", -- Replace with your new m2 animation ID
     m3 = "17889471098", -- Replace with your new m3 animation ID
     m4 = "17889290569", -- Replace with your new m4 animation ID
     ds = "10470104242", -- Replace with your new downslam animation ID
     up = "10503381238", -- Replace with your new mini uppercut animation ID
-    wc = "15955393872", -- Replace with your new wall combo animation ID
-    fdash = "18715858574", -- Replace with your new front dash animation ID
-    bdash = "696969", -- Replace with your new back dash animation ID
-    ldash = "10480796021", -- Replace with your new left dash animation ID
-    rdash = "10480793962", -- Replace with your new right dash animation ID
-    awk = "129651400898906", -- Replace with your new awakening animation ID
+    wc = "76530443909428", -- Replace with your new wall combo animation ID
+    fdash = "15676072469", -- Replace with your new front dash animation ID
+    bdash = "13801083337", -- Replace with your new back dash animation ID
+    ldash = "18715789130", -- Replace with your new left dash animation ID
+    rdash = "18715789130", -- Replace with your new right dash animation ID
+    awk = "76530443909428", -- Replace with your new awakening animation ID
     move1 = "12509505723", -- Replace with your new move 1 animation ID
-    move2 = "12618271998", -- Replace with your new move 2 animation ID
-    move3 = "17838619895", -- Replace with your new move 3 animation ID
-    move4 = "129651400898906", -- Replace with your new move 4 animation ID
-    amove1 = "13146710762", -- Replace with your new move awakening 1 animation ID
+    move2 = "13560306510", -- Replace with your new move 2 animation ID
+    move3 = "12832505612", -- Replace with your new move 3 animation ID
+    move4 = "18179181663", -- Replace with your new move 4 animation ID
+    amove1 = "18440406788", -- Replace with your new move awakening 1 animation ID
     amove2 = "94020267622363", -- Replace with your new move awakening 2 animation ID
-    amove3 = "13146710762", -- Replace with your new move awakening 3 animation ID
-    amove4 = "130301810149072", -- Replace with your new move awakening 4 animation ID
+    amove3 = "17097146599", -- Replace with your new move awakening 3 animation ID
+    amove4 = "18464362124", -- Replace with your new move awakening 4 animation ID
 }
 
 -- Code/functions to use in the handlers
@@ -148,9 +148,9 @@ local handlers = {
     rdash = function() end,
 
     awk = function()
-        chat("I WILL HOLD MY PROMISE BROTHER!")
-        task.wait(0.5)
-        chat("AS THE ELDEST BROTHER, I WILL PROTECT YOU!EVEN IF IT COSTS ME MY LIFE!")
+        chat("Your pretty fast for a non-sorcerer.")
+        task.wait(1)
+        chat("I GUESS I NEED TO UP THE PACE MYSELF!")
     end,
 
     move1 = function(tr)
@@ -184,10 +184,11 @@ local handlers = {
             if v:IsA("ParticleEmitter") then
                 local cl = v:Clone()
                 cl.Parent = blood
-                cl:Emit(90)
+                cl:Emit(200)
             end
         end
         game:GetService("Debris"):AddItem(blood, 1)
+    chat("PIERCING BLOOD!")
     end,
 
     move2 = function(tr:AnimationTrack)
@@ -225,7 +226,7 @@ local handlers = {
         game:GetService("Debris"):AddItem(bv, 0.5)
         
         newtr:Stop()
-        playAnimation("75547590335774", { Weight = 10, Speed = 1.7 })
+        playAnimation("18716698376", { Weight = 10, Speed = 1.7 })
     end,
 
     move4 = function()
@@ -280,3 +281,126 @@ lplr:GetAttributeChangedSignal("Ultimate"):Connect(function()
 end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/10tempest01/tempest-hub/refs/heads/main/Launcher.lua"))()
+
+local lplr = game.Players.LocalPlayer
+local char = lplr.Character or lplr.CharacterAdded:Wait()
+
+-- Code/functions to use in the handlers
+local function chat(msg: string)
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
+end
+
+local function playAnimation(id, details)
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if not humanoid or not humanoid:FindFirstChild("Animator") then
+        warn("Invalid humanoid or humanoid has no Animator.")
+        return
+    end
+
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. tostring(id)
+
+    local animator:Animator = humanoid:FindFirstChild("Animator")
+    local animationTrack = animator:LoadAnimation(animation)
+
+    -- Special handling for amove2 (loop at 1s)
+    if id == "13146710762" then
+        animationTrack.Looped = false  -- Prevent default looping
+        animationTrack.Stopped:Connect(function()
+            animationTrack.TimePosition = 1 -- Restart at 1 second
+            animationTrack:Play()
+        end)
+    end
+
+    animationTrack:Play()
+
+    if details then
+        if details.Priority then
+            animationTrack.Priority = details.Priority
+        end
+        if details.Looped ~= nil then
+            animationTrack.Looped = details.Looped
+        end
+        if details.Speed then
+            animationTrack:AdjustSpeed(details.Speed)
+        end
+        if details.TimePosition then
+            animationTrack.TimePosition = details.TimePosition
+        end
+        if details.Weight then
+            animationTrack:AdjustWeight(details.Weight)
+        end
+    end
+
+    return animationTrack
+end
+
+-- Updated amove2 handler to use the new logic
+local handlers = {
+    amove2 = function()
+        local animTrack = playAnimation("13146710762", { Weight = 10, Speed = 0.3 })
+
+        -- Ensure it loops from 1s
+        animTrack.Stopped:Connect(function()
+            animTrack.TimePosition = 1
+            animTrack:Play()
+        end)
+    end
+}
+
+-- Rest of your script remains unchanged...
+
+lplr:GetAttributeChangedSignal("Ultimate"):Connect(function()
+    if lplr:GetAttribute("Ultimate") == 0 then
+        task.wait(0.5) SetMoveNames()
+    end
+end)
+
+local lplr = game.Players.LocalPlayer
+local char = lplr.Character or lplr.CharacterAdded:Wait()
+
+-- Function to create a misty blood aura
+local function createMistyBloodAura()
+    local rootPart = char:FindFirstChild("HumanoidRootPart")
+    if not rootPart then 
+        warn("No HumanoidRootPart found!")
+        return 
+    end
+
+    -- Prevent duplicate auras
+    if rootPart:FindFirstChild("BloodAura") then
+        return
+    end
+
+    -- Create an attachment
+    local attachment = Instance.new("Attachment")
+    attachment.Name = "BloodAura"
+    attachment.Parent = rootPart
+
+    -- Create the misty particle emitter
+    local bloodMist = Instance.new("ParticleEmitter")
+    bloodMist.Name = "BloodMistEmitter"
+    bloodMist.Color = ColorSequence.new(Color3.fromRGB(100, 0, 0)) -- Dark red mist
+    bloodMist.LightEmission = 0.1
+    bloodMist.Size = NumberSequence.new({ 
+        NumberSequenceKeypoint.new(0, 5),   -- Start large
+        NumberSequenceKeypoint.new(0.5, 10), -- Expand
+        NumberSequenceKeypoint.new(1, 15)   -- Fade out misty
+    })
+    bloodMist.Rate = 200 -- Dense mist effect
+    bloodMist.Lifetime = NumberRange.new(3, 5) -- Stays longer
+    bloodMist.Speed = NumberRange.new(1, 2) -- Slow movement
+    bloodMist.Rotation = NumberRange.new(-10, 10) -- Slight rotation
+    bloodMist.SpreadAngle = Vector2.new(360, 360) -- Spread in all directions
+    bloodMist.Transparency = NumberSequence.new({ 
+        NumberSequenceKeypoint.new(0, 0.6),   -- Semi-transparent at start
+        NumberSequenceKeypoint.new(1, 1)     -- Fully transparent at the end
+    })
+    bloodMist.Parent = attachment
+
+    print("Misty blood aura applied.")
+end
+
+-- Instantly apply the misty blood aura
+createMistyBloodAura()
+
