@@ -1,3 +1,10 @@
+local sound = Instance.new("Sound")
+sound.SoundId = "rbxassetid://16190782181"
+sound.Volume = 1
+sound.Looped = true  -- This makes it loop forever
+sound.Parent = game.Workspace
+sound:Play()
+
 local lplr = game.Players.LocalPlayer
 local char = lplr.Character or lplr.CharacterAdded:Wait()
 
@@ -147,10 +154,12 @@ local handlers = {
     ldash = function() end,
     rdash = function() end,
 
-    awk = function()
+    awk = function(tr)
         chat("Your pretty fast for a non-sorcerer.")
         task.wait(1)
         chat("I GUESS I NEED TO UP THE PACE MYSELF!")
+        task.wait(1)
+        chat("MY BLOODLUST ISNT FUFILLED YET, WHY DONT WE FIX THAT HMM?")
     end,
 
     move1 = function(tr)
@@ -176,7 +185,7 @@ local handlers = {
         blood.CanCollide = false
         blood.Anchored = true
 
-        blood.Color = Color3.fromRGB(255, 53, 53)
+        blood.Color = Color3.fromRGB(96, 0, 0)
         blood.Material = Enum.Material.Neon
         blood.CastShadow = false
         blood.Parent = workspace
@@ -229,20 +238,40 @@ local handlers = {
         playAnimation("18716698376", { Weight = 10, Speed = 1.7 })
     end,
 
-    move4 = function()
+    move4 = function(tr)
         print("choso awk")
+    chat("ARISE!")
     end,
 
-    amove1 = function()
+    amove1 = function(tr)
         print("choso awk")
+    task.wait(0.5)
+    chat("You filthy detestable human...")
+    task.wait(1)
+    chat("FEEL THE BLOOD DRAIN FROM YOU!")
+        playAnimation("17465453123", { Weight = 10, Speed = 1 })
+        task.wait(3)
+        playAnimation("13083332742", { Weight = 10, Speed = 1 })
+    
     end,
     
-    amove2 = function()
+    amove2 = function(tr)
         print("choso awk")
+    chat("You forgot one major thing...")
+    task.wait(2)
+    chat("Bleeding Cleave.")
+  playAnimation("18716897393", { Weight = 10, Speed = 1 })
+
+
+    
     end,
 
-    amove3 = function()
+    amove3 = function(tr)
         print("choso awk")
+    chat("Hmph. Simple human.")
+    task.wait(3)
+    chat("Dodge this.")
+      playAnimation("106755459092436", { Weight = 10, Speed = 1 })
     end,
 
     amove4 = function()
@@ -356,51 +385,4 @@ lplr:GetAttributeChangedSignal("Ultimate"):Connect(function()
     end
 end)
 
-local lplr = game.Players.LocalPlayer
-local char = lplr.Character or lplr.CharacterAdded:Wait()
-
--- Function to create a misty blood aura
-local function createMistyBloodAura()
-    local rootPart = char:FindFirstChild("HumanoidRootPart")
-    if not rootPart then 
-        warn("No HumanoidRootPart found!")
-        return 
-    end
-
-    -- Prevent duplicate auras
-    if rootPart:FindFirstChild("BloodAura") then
-        return
-    end
-
-    -- Create an attachment
-    local attachment = Instance.new("Attachment")
-    attachment.Name = "BloodAura"
-    attachment.Parent = rootPart
-
-    -- Create the misty particle emitter
-    local bloodMist = Instance.new("ParticleEmitter")
-    bloodMist.Name = "BloodMistEmitter"
-    bloodMist.Color = ColorSequence.new(Color3.fromRGB(100, 0, 0)) -- Dark red mist
-    bloodMist.LightEmission = 0.1
-    bloodMist.Size = NumberSequence.new({ 
-        NumberSequenceKeypoint.new(0, 5),   -- Start large
-        NumberSequenceKeypoint.new(0.5, 10), -- Expand
-        NumberSequenceKeypoint.new(1, 15)   -- Fade out misty
-    })
-    bloodMist.Rate = 200 -- Dense mist effect
-    bloodMist.Lifetime = NumberRange.new(3, 5) -- Stays longer
-    bloodMist.Speed = NumberRange.new(1, 2) -- Slow movement
-    bloodMist.Rotation = NumberRange.new(-10, 10) -- Slight rotation
-    bloodMist.SpreadAngle = Vector2.new(360, 360) -- Spread in all directions
-    bloodMist.Transparency = NumberSequence.new({ 
-        NumberSequenceKeypoint.new(0, 0.6),   -- Semi-transparent at start
-        NumberSequenceKeypoint.new(1, 1)     -- Fully transparent at the end
-    })
-    bloodMist.Parent = attachment
-
-    print("Misty blood aura applied.")
-end
-
--- Instantly apply the misty blood aura
-createMistyBloodAura()
 
