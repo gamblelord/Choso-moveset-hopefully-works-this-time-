@@ -1,10 +1,3 @@
-local sound = Instance.new("Sound")
-sound.SoundId = "rbxassetid://16190782181"
-sound.Volume = 1
-sound.Looped = true  -- This makes it loop forever
-sound.Parent = game.Workspace
-sound:Play()
-
 local lplr = game.Players.LocalPlayer
 local char = lplr.Character or lplr.CharacterAdded:Wait()
 
@@ -90,7 +83,7 @@ local newAnimations = {
     ldash = "18715789130", -- Replace with your new left dash animation ID
     rdash = "18715789130", -- Replace with your new right dash animation ID
     awk = "76530443909428", -- Replace with your new awakening animation ID
-    move1 = "12509505723", -- Replace with your new move 1 animation ID
+    move1 = "72956171224046", -- Replace with your new move 1 animation ID
     move2 = "13560306510", -- Replace with your new move 2 animation ID
     move3 = "12832505612", -- Replace with your new move 3 animation ID
     move4 = "18179181663", -- Replace with your new move 4 animation ID
@@ -160,6 +153,43 @@ local handlers = {
         chat("I GUESS I NEED TO UP THE PACE MYSELF!")
         task.wait(1)
         chat("MY BLOODLUST ISNT FUFILLED YET, WHY DONT WE FIX THAT HMM?")
+local assetId = 2941162138 -- Your slash asset ID
+
+-- Get the local player and character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+-- Load the slash model
+local success, result = pcall(function()
+    return game:GetObjects("rbxassetid://" .. assetId)
+end)
+
+if success and #result > 0 then
+    local slash = result[1]
+    slash.Parent = workspace
+
+    -- Ensure the model has a PrimaryPart
+    if not slash.PrimaryPart then
+        slash.PrimaryPart = slash:FindFirstChildWhichIsA("BasePart")
+        if not slash.PrimaryPart then
+            warn("No PrimaryPart found in model.")
+            return
+        end
+    end
+
+    -- Position it in front of the character
+    local offset = hrp.CFrame.LookVector * 0
+    local spawnCFrame = hrp.CFrame + offset
+    slash:SetPrimaryPartCFrame(spawnCFrame)
+
+    -- Stay for 5 seconds
+    wait(5)
+    slash:Destroy()
+    print("Slash removed after 5 seconds.")
+else
+    warn("Failed to load slash asset.")
+end
     end,
 
     move1 = function(tr)
@@ -185,7 +215,7 @@ local handlers = {
         blood.CanCollide = false
         blood.Anchored = true
 
-        blood.Color = Color3.fromRGB(96, 0, 0)
+        blood.Color = Color3.fromRGB(200, 0, 0)
         blood.Material = Enum.Material.Neon
         blood.CastShadow = false
         blood.Parent = workspace
@@ -218,29 +248,47 @@ local handlers = {
         c:Disconnect()
     end,
 
-    move3 = function(newtr)
-        local hrp = char:FindFirstChild("HumanoidRootPart")
-        task.wait(0.5)
-        local bv = Instance.new("BodyVelocity")
-        bv.MaxForce = Vector3.new(math.huge, 0, math.huge)
-        bv.Velocity = hrp.CFrame.LookVector * 50
-        bv.Parent = hrp
-        
-        task.spawn(function()
-            while true do
-                bv.Velocity = hrp.CFrame.LookVector * 100
-                task.wait()
-            end
-        end)
-        game:GetService("Debris"):AddItem(bv, 0.5)
-        
-        newtr:Stop()
-        playAnimation("18716698376", { Weight = 10, Speed = 1.7 })
+    move3 = function()
+local assetId = 48266723 -- Your slash asset ID
+
+-- Get the local player and character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+-- Load the slash model
+local success, result = pcall(function()
+    return game:GetObjects("rbxassetid://" .. assetId)
+end)
+
+if success and #result > 0 then
+    local slash = result[1]
+    slash.Parent = workspace
+
+    -- Ensure the model has a PrimaryPart
+    if not slash.PrimaryPart then
+        slash.PrimaryPart = slash:FindFirstChildWhichIsA("BasePart")
+        if not slash.PrimaryPart then
+            warn("No PrimaryPart found in model.")
+            return
+        end
+    end
+
+    -- Position it in front of the character
+    local offset = hrp.CFrame.LookVector * 5
+    local spawnCFrame = hrp.CFrame + offset
+    slash:SetPrimaryPartCFrame(spawnCFrame)
+
+    -- Stay for 5 seconds
+    wait(5)
+    slash:Destroy()
+    print("Slash removed after 5 seconds.")
+else
+    warn("Failed to load slash asset.")
+end
     end,
 
-    move4 = function(tr)
-        print("choso awk")
-    chat("ARISE!")
+    move4 = function()
     end,
 
     amove1 = function(tr)
@@ -257,13 +305,48 @@ local handlers = {
     
     amove2 = function(tr)
         print("choso awk")
-    chat("You forgot one major thing...")
-    task.wait(2)
-    chat("Bleeding Cleave.")
-  playAnimation("18716897393", { Weight = 10, Speed = 1 })
+    chat("Impromptu.")
+    task.wait(0.5)
+    chat("Sliding Scales.")
+    task.wait(0.5)
+    chat("Slicing Exorcism.")
+    local assetId = 400428125 -- Your slash asset ID
 
+-- Get the local player and character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
 
-    
+-- Load the slash model
+local success, result = pcall(function()
+    return game:GetObjects("rbxassetid://" .. assetId)
+end)
+
+if success and #result > 0 then
+    local slash = result[1]
+    slash.Parent = workspace
+
+    -- Ensure the model has a PrimaryPart
+    if not slash.PrimaryPart then
+        slash.PrimaryPart = slash:FindFirstChildWhichIsA("BasePart")
+        if not slash.PrimaryPart then
+            warn("No PrimaryPart found in model.")
+            return
+        end
+    end
+
+    -- Position it in front of the character
+    local offset = hrp.CFrame.LookVector * 10
+    local spawnCFrame = hrp.CFrame + offset
+    slash:SetPrimaryPartCFrame(spawnCFrame)
+
+    -- Stay for 5 seconds
+    wait(6)
+    slash:Destroy()
+    print("Slash removed after 5 seconds.")
+else
+    warn("Failed to load slash asset.")
+end
     end,
 
     amove3 = function(tr)
