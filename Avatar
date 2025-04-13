@@ -65,32 +65,32 @@ local oldAnimations = {
     move4 = "12510170988", -- Replace with the old move 4 animation ID
     amove1 = "18715881168", -- Replace with the old awakening move 1 animation ID
     amove2 = "11365563255", -- Replace with the old awakening move 2 animation ID
-    amove3 = "12983333733", -- Replace with the old awakening move 3 animation ID
+    amove3 = "14138253524", -- Replace with the old awakening move 3 animation ID
     amove4 = "13927612951", -- Replace with the old awakening move 4 animation ID
 }
 
 -- New Animations (Animations that will replace the old ones)
 local newAnimations = {
-    m1 = "17889458563", -- Replace with your new m1 animation ID
-    m2 = "17889461810", -- Replace with your new m2 animation ID
-    m3 = "17889471098", -- Replace with your new m3 animation ID
-    m4 = "17889290569", -- Replace with your new m4 animation ID
-    ds = "10470104242", -- Replace with your new downslam animation ID
-    up = "10503381238", -- Replace with your new mini uppercut animation ID
+    m1 = "16515503507", -- Replace with your new m1 animation ID
+    m2 = "15240216931", -- Replace with your new m2 animation ID
+    m3 = "18716478642", -- Replace with your new m3 animation ID
+    m4 = "17838006839", -- Replace with your new m4 animation ID
+    ds = "12463072679", -- Replace with your new downslam animation ID
+    up = "13501296372", -- Replace with your new mini uppercut animation ID
     wc = "15955393872", -- Replace with your new wall combo animation ID
-    fdash = "18715858574", -- Replace with your new front dash animation ID
+    fdash = "18715777712", -- Replace with your new front dash animation ID
     bdash = "696969", -- Replace with your new back dash animation ID
-    ldash = "10480796021", -- Replace with your new left dash animation ID
-    rdash = "10480793962", -- Replace with your new right dash animation ID
-    awk = "129651400898906", -- Replace with your new awakening animation ID
-    move1 = "12509505723", -- Replace with your new move 1 animation ID
-    move2 = "12618271998", -- Replace with your new move 2 animation ID
+    ldash = "13376869471", -- Replace with your new left dash animation ID
+    rdash = "13376869471", -- Replace with your new right dash animation ID
+    awk = "18716765679", -- Replace with your new awakening animation ID
+    move1 = "13146710762", -- Replace with your new move 1 animation ID
+    move2 = "18181589384", -- Replace with your new move 2 animation ID
     move3 = "17838619895", -- Replace with your new move 3 animation ID
-    move4 = "129651400898906", -- Replace with your new move 4 animation ID
-    amove1 = "13146710762", -- Replace with your new move awakening 1 animation ID
-    amove2 = "94020267622363", -- Replace with your new move awakening 2 animation ID
-    amove3 = "17838006839", -- Replace with your new move awakening 3 animation ID
-    amove4 = "130301810149072", -- Replace with your new move awakening 4 animation ID
+    move4 = "130301810149072", -- Replace with your new move 4 animation ID
+    amove1 = "15502751480", -- Replace with your new move awakening 1 animation ID
+    amove2 = "13146710762", -- Replace with your new move awakening 2 animation ID
+    amove3 = "13146710762", -- Replace with your new move awakening 3 animation ID
+    amove4 = "17464644182", -- Replace with your new move awakening 4 animation ID
 }
 
 -- Code/functions to use in the handlers
@@ -148,9 +148,9 @@ local handlers = {
     rdash = function() end,
 
     awk = function()
-        chat("I WILL HOLD MY PROMISE BROTHER!")
+        chat("Your one messy fighter. guess i need to level the playing field.")
         task.wait(0.5)
-        chat("AS THE ELDEST BROTHER, I WILL PROTECT YOU!")
+        chat("Dont run now.")
     end,
 
     move1 = function(tr)
@@ -176,7 +176,7 @@ local handlers = {
         blood.CanCollide = false
         blood.Anchored = true
 
-        blood.Color = Color3.fromRGB(85, 19, 13)
+        blood.Color = Color3.fromRGB(255, 0, 0)
         blood.Material = Enum.Material.Neon
         blood.CastShadow = false
         blood.Parent = workspace
@@ -208,28 +208,10 @@ local handlers = {
         c:Disconnect()
     end,
 
-    move3 = function(newtr)
-        local hrp = char:FindFirstChild("HumanoidRootPart")
-        task.wait(0.5)
-        local bv = Instance.new("BodyVelocity")
-        bv.MaxForce = Vector3.new(math.huge, 0, math.huge)
-        bv.Velocity = hrp.CFrame.LookVector * 50
-        bv.Parent = hrp
-        
-        task.spawn(function()
-            while true do
-                bv.Velocity = hrp.CFrame.LookVector * 100
-                task.wait()
-            end
-        end)
-        game:GetService("Debris"):AddItem(bv, 0.5)
-        
-        newtr:Stop()
-        playAnimation("75547590335774", { Weight = 10, Speed = 1.7 })
+    move3 = function()
     end,
 
     move4 = function()
-        print("choso awk")
     end,
 
     amove1 = function()
