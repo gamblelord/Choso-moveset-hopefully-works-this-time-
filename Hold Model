@@ -1,0 +1,54 @@
+local assetId = "rbxassetid://15089669896"
+local model = game:GetObjects(assetId)[1]
+if not model then warn("Failed to load model") return end
+
+-- Grab player and character
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Get the R6 Right Arm
+local rightArm = character:FindFirstChild("Right Arm")
+if not rightArm then warn("Right Arm not found") return end
+
+-- Set PrimaryPart if not set
+if not model.PrimaryPart then
+    local base = model:FindFirstChildWhichIsA("BasePart", true)
+    if base then model.PrimaryPart = base else warn("No PrimaryPart") return end
+end
+
+-- === SCALE SETTINGS ===
+local scaleFactor = 2 -- Change this value to scale bigger or smaller
+
+-- Scale all BaseParts inside the model
+for _, part in ipairs(model:GetDescendants()) do
+	if part:IsA("BasePart") then
+		part.Size *= scaleFactor
+	end
+end
+
+-- Offset for positioning/rotation
+local offset = CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(90), 0, 0)
+
+-- Position and parent model
+model:SetPrimaryPartCFrame(rightArm.CFrame * offset)
+model.PrimaryPart.Anchored = false
+model.Parent = character
+
+-- Weld each part to the Right Arm
+for _, part in ipairs(model:GetDescendants()) do
+	if part:IsA("BasePart") then
+		local weld = Instance.new("Weld")
+		weld.Part0 = rightArm
+		weld.Part1 = part
+		weld.C0 = rightArm.CFrame:inverse() * part.CFrame
+		weld.Parent = rightArm
+		part.Anchored = false
+	end
+end
+
+-- Remove after 3 seconds
+task.delay(4, function()
+	if model and model.Parent then
+		model:Destroy()
+	end
+end)
