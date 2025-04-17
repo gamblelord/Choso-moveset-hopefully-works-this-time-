@@ -17,7 +17,7 @@ local ultbarclr:Frame = ultbar:FindFirstChild("Health").Bar.Bar
 local ulttext:TextButton = ultbar:FindFirstChild("TextLabel")
 
 -- Awakening text & color
-ulttext.Text = "Flowing Red Scale"
+ulttext.Text = "Reborn"
 ultbarclr.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- In RGB values (red, green, blue)
 
 local hotbar:ScreenGui = plrgui:FindFirstChild("Hotbar")
@@ -163,10 +163,8 @@ local handlers = {
     rdash = function() end,
 
     awk = function()
-        chat("My blood stirs... it demands violence")
-        task.wait(0.5)
-        chat("Flowing Red Scale... Let it drown the world with gore.")
-local assetId = "rbxassetid://15089669896"
+        chat("From cursed soil, I was shaped. From blood, I became. And now, I am born. not as a man, but as judgment.")
+local assetId = "rbxassetid://1185934539"
 local model = game:GetObjects(assetId)[1]
 if not model then warn("Failed to load model") return end
 
