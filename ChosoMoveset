@@ -2,9 +2,9 @@ local lplr = game.Players.LocalPlayer
 local char = lplr.Character or lplr.CharacterAdded:Wait()
 
 -- Object Removers (will remove vfx on the weapons, though)
-local katana1 = false -- Make true if you want to remove Blade Master's katana
-local katana2 = false -- Make true if you want to remove Sonic's katana
-local bat = false -- Make true if you want to remove Metal Bat's baseball bat
+local katana1 = false -- Make true if you want to remove katana
+local katana2 = false -- Make true if you want to remove sword
+local bat = false -- Make true if you want to remove bat
 if katana1 then char:FindFirstChild("Sheathe"):Destroy() char:FindFirstChild("#KATANAWEAPON"):Destroy() end
 if katana2 then char:FindFirstChild("Sheathed"):Destroy() char:FindFirstChild("#NinjaKATANA"):Destroy() end
 if bat then char:FindFirstChild("#BATWEAPON"):Destroy() end
